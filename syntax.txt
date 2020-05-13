@@ -1,0 +1,147 @@
+FLUTTER:
+
+- Android: Class View - Flutter: Widget
+- Android: XML - Flutter: Widget Tree
+- iOS: Class UIView - Flutter Widget
+- iOS: Storyboard - Flutter Widget Tree
+
+https://api.flutter.dev/flutter/material/material-library.html
+MaterialApp (
+  ...
+  home: Scaffold (
+    appBar: AppBar(
+      title: Text('Hola Mundo')
+    ),
+    body: Center(
+      child: Text('HolaMundo')
+    ),
+	floatingActionButton: FloatingActionButton(
+		onPressed: () => setState(() => _count++),
+        tooltip: 'Increment Counter',
+        child: const Icon(Icons.add),
+	),
+  )
+)
+
+Widgets:(https://x-wei.github.io/flutter_catalog/#/)
+-Text: representa un texto o cadena de caracteres. Admite diversos parámetros o propiedades, además del texto literal que será mostrado. Podemos definirle estilos y características de apariencia particulares.
+-Row: permite organizar y posicionar otros widgets hijos en forma de fila o renglón.
+-Column: permite organizar y posicionar otros widgets hijos en forma de columna.
+-Stack: permite apilar widgets hijos con respecto al eje Z (elevación) en la interfaz. El ultimo componente dentro de Stack es el que queda encima.
+-Container: es uno de los widgets más versátiles de Flutter y permite organizar otros widgets como si fuera una caja o contenedor. Este widget es equivalente a los divs de html y admiten atributos similares de apariencia.
+-InkWell: Crea areas dibujables que tambien puedenn ser touchables
+
+Clases:
+-StatelessWidget: para contenido estático
+-StatefulWidget: para contenido dinamico
+
+Row,Column,Stack:
+-children: Cada widget que esté contenido dentro de ellos.
+
+Reto Prueba:
+trips.dart (buttonNavigationBar)
+-home_trips.dart
+-search_trips.dart
+-profile_trips.dart
+
+
+home_trips.dart:
+-----------------------------------------------------------------------------
+|																			|
+|																			|
+|   //Stack		header_appbar.dart:											|
+|	----------------------------------------------------------------------- |
+|	| blue gradient rectangle:		gradient.dart:						  | |
+|	| ------------------------------------------------------------------- | |
+|	| |Container														 || |
+|	| |																	 || |
+|	| |																	 || |
+|	| |decoration														 || |
+|	| |																	 || |
+|	| |																	 || |
+|	| |/Container														 || |
+|	| |------------------------------------------------------------------|| |
+|	|	card_image_list.dart:											  | |
+|	| --------------------------------------------------------------------| |
+|	| |Container														 || |
+|	| |///ListView Horizontal											 || |
+|	| |card Image:		card_image.dart:								 || |
+|	| | -----------------------------------------------------------------|| |
+|	| ||Stack			|	|Stack			|							|||	|
+|	| ||Container		| 	|Container		|	...						||| |
+|	| ||				|	|				|							||| |
+|	| ||decoration		|	|decoration		|							||| |
+|	| ||Image1			|	|Image2 		|	...						||| |
+|	| ||				|	|				|							||| |
+|	| ||/Container		|	|/Container		|	...						||| |
+|	| ||        	floating_action_button_green.dart:					||| |
+|	| ||FloatingAction	|	|FloatingAction |							||| |
+|	| ||ButtonGreen		|	|ButtonGreen	|							|||	|
+|	| |-----------------------------------------------------------------||| |
+|	| --------------------------------------------------------------------- |
+|																			|
+|	//ListView Vertical														|
+|	title+start+description:		description_place.dart:					|
+|	----------------------------------------------------------------------	|
+|	|Container															  |	|
+|	|Column - Children													  |	|
+|	|         ----------------------------------------------              |	|
+|	|Row      |Container /Container   |Row (Stars)/Row     |/Row     <----|------
+|	|Children |(Title)                |Children   /Children|/Children     |	|	|
+|	|         ----------------------------------------------              |	|	|
+|	|		 															  |	|	|
+|	|		  --------------------------------------------------          |	|	|
+|	|		  |Container                                       |          |	|	|
+|	|		  |(description)								   |          |	|	|
+|	|		  --------------------------------------------------          |	|	|
+|	|			button_purple.dart:										  |	|	|
+|	|		  --------------------------------------------------		  | |	|
+|	|		  |InkWell	(button)							   |		  | |	|
+|	|		  |Container									   |		  | |	|
+|	|		  |												   |		  | |	|
+|	|	      |decoration									   |		  | |	|
+|	|		  |												   |		  | |	|
+|	|		  |/Container									   |		  | |	|
+|	|		  --------------------------------------------------  		  |	|	|
+|   |/Children /Column /Container                                         |	|	|
+|	----------------------------------------------------------------------- |   |
+|																			|   |
+|	review List:   reviewList.dart:											|	|
+|	-----------------------------------------------------------------------	| 	|
+|	|Column																  |	|	|
+|	|Children															  |	|	|	
+|	|review:    review.dart:											  |	|	|
+|	|--------------------------------------------------------------------|| |   |
+|	||Row     |Container  |Column                          				 ||	|	|
+|	||		 |(Image)    |-----------------------------------------------|| |   |
+|	||		 |			 |Container (User Name)           				 || |   |
+|	||		 |	 		 |-----------------------------------------------|| |   |
+|	||		 |			 |Row     |Container  |Row (Stars)				 ||------
+|	||		 |			 |        |(Info)     |           				 || |
+|	||		 |			 |-----------------------------------------------|| |
+|	||		 |			 |Container (Comment)             				 || |
+|	|---------------------------------------------------------------------| |
+|	|/Children /Column													  |	|
+|	----------------------------------------------------------------------- |			
+-----------------------------------------------------------------------------
+		 
+Container:
+-Básicamente se define como: 
+var = Container(
+	margin o cualquier otras propiedades de decoración,
+	child: Texto, o imagen, o icon o cualquier otro widget,
+		--- propiedades del widget anterior,
+)
+		 
+Clases Importantes:
+-margin: EdgeInsets.only() -> Aplica margenes top, right, etc.
+-style: TextStyle()  -> Aplica estilo a un texto (dentro de child:Text)
+-decoration: BoxDecoration() -> Decorar un container como cambiar la forma
+--image: DecorationImage(
+	fit: Boxfit.fill  -> dimensiona la imagen al container
+	image: AssetImage(path)) -> inserta imagen de una ubicación en el proyecto
+-width:double.infinity -> coge toda la pantalla
+-padding -> bordes internos del container
+-margin -> bordes externos del container
+-debugShowCheckedModeBanner = false -> desactiva el liston de debug
+
